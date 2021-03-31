@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1" />
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <!-- Optional theme -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+
+</head>
+<body>
+<div class="container">
+
+
+    <div id="container"
+         style="width: 550px; height: 400px; margin: 0 auto"></div>
+</div>
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<script inline="javascript">
+    $(function(){
+
+Highcharts.chart('container', {
+chart: {
+zoomType: 'x'
+},
+
+xAxis: {
+type: [{{#surveyMap}}
+        {{id}},
+    {{/surveyMap}}]
+},
+yAxis: {
+title: {
+text: 'Exchange rate'
+}
+},
+legend: {
+enabled: false
+},
+plotOptions: {
+area: {
+fillColor: {
+linearGradient: {
+x1: 0,
+y1: 0,
+x2: 0,
+y2: 1
+},
+stops: [
+[0, Highcharts.getOptions().colors[0]],
+[1, Highcharts.color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+]
+},
+marker: {
+radius: 2
+},
+lineWidth: 1,
+states: {
+hover: {
+lineWidth: 1
+}
+},
+threshold: null
+}
+},
+
+series: [{
+type: 'area',
+name: 'USD to EUR',
+data: [{{#surveyMap}}
+    {{value}},
+{{/surveyMap}}]
+}]
+});
+});
+
+</script>
+</body>
+</html>

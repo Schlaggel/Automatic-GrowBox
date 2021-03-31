@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Table</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container" >
+    <a class="btn btn-primary btn-sm" href="/user">Home</a>
+    <a class="btn btn-primary btn-sm" href='/logout'>logout</a>
+</div>
+</body>
+
+
+<div class="container" >
+    <h2>Admin Table</h2>
+    <form action="/admin/search" method="post">
+     <div class="input-group">
+        <input type="text" name="username" class="form-control" placeholder="Search for...">
+         <span class="input-group-btn">
+            <button class="btn btn-secondary" type="submit">Search!</button>
+         </span>
+     </div>
+   </form>
+
+
+    <table class="table table-bordered table-sm">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Device</th>
+            <th>Role</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#user}}
+        <tr>
+            <td>{{userId}}</td>
+            <td>{{username}}</td>
+            <td>{{devices}}</td>
+            <td>{{roles}}</td>
+        </tr>
+        {{/user}}
+        </tbody>
+    </table>
+</div>
+<center><nav>
+    <div>
+        <nobr>
+            {{#hasPrev}}<a class="btn btn-primary btn-sm" href="/admin?page={{prev}}">Prev</a>&nbsp;&nbsp;&nbsp;{{/hasPrev}}
+            {{#hasNext}}<a class="btn btn-primary btn-sm" href="/admin?page={{next}}">Next</a>{{/hasNext}}
+        </nobr>
+    </div>
+</nav></center>
+
+</body>
+</html>
