@@ -17,16 +17,15 @@ public class Device {
 
     private String description;
 
+    private String identificator;
+
 
     @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.MERGE)
-    @JoinColumn(name="user_id", nullable=false)
+    @JoinColumn(name="user_id") //nullable=false
     private User deviceUser;
 
     @OneToMany(mappedBy = "device", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    private Set<Sensor> sensors = Collections.emptySet();;
-
-
-
+    private Set<Sensor> sensors = Collections.emptySet();
 
     public Device() {
 
@@ -88,6 +87,13 @@ public class Device {
         this.sensors = sensors;
     }
 
+    public String getIdentificator() {
+        return identificator;
+    }
+
+    public void setIdentificator(String identificator) {
+        this.identificator = identificator;
+    }
 }
 
 

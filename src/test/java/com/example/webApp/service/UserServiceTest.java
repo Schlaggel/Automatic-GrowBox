@@ -1,4 +1,4 @@
-package com.example.webApp.Servie;
+package com.example.webApp.service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

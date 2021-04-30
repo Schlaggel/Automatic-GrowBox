@@ -1,18 +1,17 @@
 package com.example.webApp.controller;
 
-import com.example.webApp.Servie.DeviceService;
-import com.example.webApp.Servie.SensorService;
+
+import com.example.webApp.connection.Publisher;
+import com.example.webApp.service.DeviceService;
+import com.example.webApp.service.SensorService;
 import com.example.webApp.dto.DeviceDTOWithSensors;
 import com.example.webApp.dto.SensorDTO;
-import com.example.webApp.repository.SensorRepository;
-import com.example.webApp.util.Sensor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -25,13 +24,16 @@ public class SensorController {
     private SensorService sensorService;
     @Autowired
     private DeviceService deviceService;
-
-
+    @Autowired
+    private Publisher publisher;
 
     @PostMapping("/value")
-    public void addValue(SensorDTO sensorDTO, String deviceDescription){
-      DeviceDTOWithSensors device =  deviceService.findByDescription(deviceDescription);
+    @ResponseBody
+    public String addValue(SensorDTO sensorDTO, String identificator){
+      DeviceDTOWithSensors device =  deviceService.findByIdentificator(identificator);
+       // publisher.publish("!");
       sensorService.addSensor(sensorDTO, device.getDeviceId());
+      return "true";
     }
 
     @PostMapping("/test")
@@ -39,12 +41,8 @@ public class SensorController {
         DeviceDTOWithSensors device =  deviceService.findByDescription(deviceDescription);
         List<SensorDTO> sensorDTO = sensorService.searchValues(argument, device.getDeviceId());
         model.addAttribute("surveyMap", sensorDTO);
-
-
         return "graph";
     }
-
-
 
 
 

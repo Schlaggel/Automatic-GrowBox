@@ -1,11 +1,12 @@
 package com.example.webApp.config;
 
-import com.example.webApp.Servie.UserServiceSecurity;
+import com.example.webApp.service.UserServiceSecurity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -30,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                // .antMatchers("/admin/**").permitAll()
                // .antMatchers("/").hasRole("USER")
-                .antMatchers("/registration", "/registration/**", "/404", "/device/sensor/value", "/test", "/test1").not().fullyAuthenticated()
+                .antMatchers("/registration", "/registration/**", "/404", "/device/sensor/value", "/test").not().fullyAuthenticated()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
@@ -44,6 +45,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.csrf().disable();
 
     }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+       web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**","/assets/**","/fonts/**","/dis/**","/vendor1/**");
+    }
+
 
     @Autowired
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

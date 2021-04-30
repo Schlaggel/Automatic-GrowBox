@@ -1,4 +1,4 @@
-package com.example.webApp.Servie;
+package com.example.webApp.service;
 
 import com.example.webApp.repository.UserRepository;
 import com.example.webApp.util.User;

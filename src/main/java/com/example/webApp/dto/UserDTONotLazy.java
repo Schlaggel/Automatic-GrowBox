@@ -1,6 +1,8 @@
 package com.example.webApp.dto;
 
+import java.util.Arrays;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class UserDTONotLazy {
 
@@ -9,6 +11,7 @@ public class UserDTONotLazy {
     private String password;
     private Set<RoleDTO> roles;
     private Set<DeviceDTOWithSensors> devices;
+
 
     public Set<DeviceDTOWithSensors> getDevices() {
         return devices;
@@ -25,7 +28,6 @@ public class UserDTONotLazy {
     public void setRoles(Set<RoleDTO> roles) {
         this.roles = roles;
     }
-
 
 
     public Long getUserId() {
@@ -52,5 +54,14 @@ public class UserDTONotLazy {
         this.password = password;
     }
 
-
+    @Override
+    public String toString() {
+        return "UserDTONotLazy{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", roles=" + roles +
+                ", devices=" + devices +
+                '}';
+    }
 }

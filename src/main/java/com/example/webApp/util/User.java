@@ -29,7 +29,6 @@ public class User{
     public User() {
     }
 
-
     public Long getUserId() {
         return userId;
     }
@@ -66,10 +65,7 @@ public class User{
         return devices;
     }
 
-    public void setDevices(Set<Device> devices) {
+     public void setDevices(Set<Device> devices) {
         this.devices = devices;
     }
-
-
-
 }

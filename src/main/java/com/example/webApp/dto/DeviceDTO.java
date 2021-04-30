@@ -1,9 +1,11 @@
 package com.example.webApp.dto;
 
 public class DeviceDTO {
+
     private Long deviceId;
     private boolean isEnable;
     private String description;
+    private String identificator;
 
     public Long getDeviceId() {
         return deviceId;
@@ -29,5 +31,11 @@ public class DeviceDTO {
         this.description = description;
     }
 
+    public String getIdentificator() {
+        return identificator;
+    }
 
+    public void setIdentificator(String identificator) {
+        this.identificator = identificator;
+    }
 }

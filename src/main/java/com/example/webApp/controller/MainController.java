@@ -1,18 +1,12 @@
 package com.example.webApp.controller;
 
-import com.example.webApp.Servie.UserService;
-import com.example.webApp.dto.UserDTONotLazy;
-import com.example.webApp.repository.UserRepository;
-import com.example.webApp.util.User;
-import org.modelmapper.ModelMapper;
+import com.example.webApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 
 @Controller
@@ -35,6 +29,8 @@ public class MainController {
         model.addAttribute("hasNext", hasNext);
         model.addAttribute("user", userService.findAll(pageable));
         model.addAttribute("next", pageable.getPageNumber() + 1);
+
+        System.out.print(userService.findAll(pageable));
         return "admin";
     }
 

@@ -5,6 +5,7 @@ public class DeviceDTOwithUser {
     private Long deviceId;
     private boolean isEnable;
     private String description;
+    private String identificator;
     private UserDTONotLazy userDTONotLazy;
 
     public DeviceDTOwithUser() {
@@ -41,5 +42,13 @@ public class DeviceDTOwithUser {
 
     public void setUserDTONotLazy(UserDTONotLazy userDTONotLazy) {
         this.userDTONotLazy = userDTONotLazy;
+    }
+
+    public String getIdentificator() {
+        return identificator;
+    }
+
+    public void setIdentificator(String identificator) {
+        this.identificator = identificator;
     }
 }

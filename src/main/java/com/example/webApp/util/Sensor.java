@@ -1,6 +1,8 @@
 package com.example.webApp.util;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -15,16 +17,18 @@ public class Sensor {
     @JoinColumn(name = "device_id")
     private Device device;
 
-    public Sensor(String description) {
-        this.description = description;
-    }
-
     private String description;
 
     private Integer value;
 
+    private Date date;
+
     public Sensor() {
 
+    }
+
+    public Sensor(String description) {
+        this.description = description;
     }
 
     public Long getId() {
@@ -57,5 +61,13 @@ public class Sensor {
 
     public void setValue(Integer value) {
         this.value = value;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

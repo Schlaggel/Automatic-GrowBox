@@ -1,7 +1,6 @@
 package com.example.webApp.controller;
 
-import com.example.webApp.Servie.UserService;
-import com.example.webApp.repository.RoleRepository;
+import com.example.webApp.service.UserService;
 import com.example.webApp.util.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;

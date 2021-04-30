@@ -7,9 +7,18 @@ public class DeviceDTOWithSensors {
     private Long deviceId;
     private boolean isEnable;
     private String description;
+    private String identificator;
+
 
     private Set<SensorDTO> sensors;
 
+    public String getIdentificator() {
+        return identificator;
+    }
+
+    public void setIdentificator(String identificator) {
+        this.identificator = identificator;
+    }
 
     public DeviceDTOWithSensors() {
         isEnable = true;

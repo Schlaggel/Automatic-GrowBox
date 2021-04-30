@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 <head>
     <title>Registration</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/cute-alert.js"></script>
 </head>
 
 <div class="container ">
@@ -37,7 +39,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block"> Create  </button>
+                            <button type="submit" id="toast" class="btn btn-primary btn-block"> Create</button>
                         </div>
                         <p class="text-center"><a href="/login" class="btn">Login</a></p>
                     </form>
@@ -48,6 +50,18 @@
     </div>
 
 </div>
+
+<script>
+    var toast = document.getElementById("toast");
+    toast.addEventListener("click", () => {
+        cuteToast({
+            type: "success",
+            message: "Registration successful",
+            timer: 5000
+        })
+    })
+
+</script>
 
 
 

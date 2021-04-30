@@ -1,12 +1,11 @@
 package com.example.webApp.controller;
 
-import com.example.webApp.Servie.DeviceService;
-import com.example.webApp.Servie.SensorService;
-import com.example.webApp.Servie.UserService;
+import com.example.webApp.service.DeviceService;
+import com.example.webApp.service.SensorService;
+import com.example.webApp.service.UserService;
 import com.example.webApp.dto.DeviceDTOWithSensors;
 import com.example.webApp.dto.SensorDTO;
 import com.example.webApp.dto.UserDTONotLazy;
-import com.example.webApp.repository.DeviceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -14,9 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller

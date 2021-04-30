@@ -32,6 +32,13 @@
 
     <table class="table table-bordered table-sm">
         <thead>
+        <style>
+            table {
+                table-layout: fixed;
+                width: 100%;
+            }
+        </style>
+
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -44,8 +51,10 @@
         <tr>
             <td>{{userId}}</td>
             <td>{{username}}</td>
-            <td>{{devices}}</td>
-            <td>{{roles}}</td>
+            <td>{{#devices}} {{description}} {{/devices}}</td>
+            <td>{{#roles}}
+                {{role}}
+            {{/roles}}</td>
         </tr>
         {{/user}}
         </tbody>

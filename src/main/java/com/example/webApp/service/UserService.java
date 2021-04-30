@@ -1,4 +1,4 @@
-package com.example.webApp.Servie;
+package com.example.webApp.service;
 
 import com.example.webApp.dto.UserDTONotLazy;
 import com.example.webApp.repository.DeviceRepository;
@@ -33,8 +33,14 @@ public class UserService {
 
 
     public UserDTONotLazy findByUsername(String username) {
-        return modelMapper.map(userRepository.findByUsername(username),
-                UserDTONotLazy.class);
+        UserDTONotLazy user = null;
+       try {
+           user = modelMapper.map(userRepository.findByUsername(username),
+                   UserDTONotLazy.class);
+       } catch (Exception e){
+           user = null;
+       }
+        return user;
     }
 
     public UserDTONotLazy saveUser(User user) throws ValidationException {
@@ -50,6 +56,7 @@ public class UserService {
     }
 
     public  List<UserDTONotLazy> findAll(Pageable pageable){
+
         return userRepository.findAll(pageable)
                 .stream()
                 .map(user -> modelMapper.map(user, UserDTONotLazy.class))

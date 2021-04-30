@@ -11,4 +11,6 @@ public interface DeviceRepository extends JpaRepository<Device, Long> {
   Device findDeviceByDeviceId(Long deviceId);
 
   Device findByDescription(String description);
+
+  Device findByIdentificator(String identificator);
 }

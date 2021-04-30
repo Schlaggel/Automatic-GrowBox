@@ -1,9 +1,14 @@
 package com.example.webApp.dto;
 
+import java.util.Date;
+
 public class SensorDTO {
     private Long id;
     private String description;
     private Integer value;
+    private Date date;
+
+
 
     public Long getId() {
         return id;
@@ -27,5 +32,13 @@ public class SensorDTO {
 
     public void setValue(Integer value) {
         this.value = value;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
